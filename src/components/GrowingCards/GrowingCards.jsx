@@ -10,9 +10,17 @@ const GrowingCards = () => {
     "https://images.pexels.com/photos/414706/pexels-photo-414706.jpeg?auto=compress&cs=tinysrgb&w=600",
   ];
 
+  setTimeout(() => {
+    if (activeCard > 1) {
+      setActiveCard(0);
+    } else {
+      setActiveCard(activeCard + 1);
+    }
+  }, 4000);
+
   return (
-    <div className="h-screen">
-      <div className="flex space-x-4 h-[50vh]">
+    <div className="">
+      <div className="flex flex-row space-x-4 h-[60vh]">
         {images.map((src, index) => {
           return (
             <Card
@@ -22,6 +30,7 @@ const GrowingCards = () => {
                 setActiveCard(index);
               }}
               imageSrc={src}
+              to={"/shop/"}
             />
           );
         })}

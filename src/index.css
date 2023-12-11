@@ -30,3 +30,12 @@
 .cards-container::-webkit-scrollbar-thumb:hover {
   background: #bebebe;
 }
+
+@keyframes width {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

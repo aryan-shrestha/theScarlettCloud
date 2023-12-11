@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ activeCard, id, setActiveCard, imageSrc }) => {
+const Card = ({ activeCard, id, setActiveCard, imageSrc, to }) => {
+  const [progress, setProgress] = useState(0);
+
   return (
     <div
-      className={`flex flex-grow  ${
-        activeCard == id ? "bg-neutral-900 text-white" : "w-32"
-      } cursor-pointer rounded-tl-3xl rounded-br-[4rem] overflow-hidden`}
+      className={`relative h-full flex transition-width duration-1000 ${
+        activeCard == id
+          ? "bg-neutral-900 text-white w-[250rem]"
+          : "flex-col w-32 md:w-[90%]"
+      } cursor-pointer rounded-tl-3xl rounded-br-[4rem] overflow-hidden items-center`}
       onClick={setActiveCard}
     >
       <div
-        className={`${
-          activeCard != id && "hidden"
-        } flex flex-col justify-between py-6  p-6 w-[55%]`}
+        className={`flex flex-col p-6 w-[100%] ${
+          activeCard != id ? "space-y-2" : "space-y-6 "
+        }`}
       >
         <div className="">
           <svg
@@ -31,20 +35,36 @@ const Card = ({ activeCard, id, setActiveCard, imageSrc }) => {
           </svg>
         </div>
 
-        <h1 className="font-playfairDisplay text-4xl font-medium relative md:leading-[160%]">
+        <h1
+          className={`font-playfairDisplay text-4xl font-medium relative md:leading-[135%] ${
+            activeCard != id && "text-xl"
+          }`}
+        >
           Discover the Perfect Christmas{" "}
-          <span className="px-4 pb-2 rounded-tr-3xl rounded-bl-3xl inline-flex bg-secondary text-neutral-800 text-xl md:text-4xl">
+          <span
+            className={`px-4 pb-2 rounded-tr-3xl rounded-bl-3xl inline-flex bg-secondary text-neutral-800  ${
+              activeCard != id ? "text-l" : "text-xl md:text-4xl"
+            }`}
+          >
             Present
           </span>{" "}
         </h1>
-        <p className="line-clamp-3 md:leading-7">
-          Explore our curated collection of festive delights that cater to every
-          age, interest, and style. From cozy winter essentials to cutting-edge
-          gadgets, we have something for everyone on your list. With a wide
-          range of options, you're sure to find a gift that resonates with the
-          unique personality of each recipient.
-        </p>
-        <Link className="bg-white text-neutral-800 w-fit px-4 py-2 rounded-3xl flex items-center">
+        {activeCard === id && (
+          <p className={`line-clamp-3 md:leading-7`}>
+            Explore our curated collection of festive delights that cater to
+            every age, interest, and style. From cozy winter essentials to
+            cutting-edge gadgets, we have something for everyone on your list.
+            With a wide range of options, you're sure to find a gift that
+            resonates with the unique personality of each recipient.
+          </p>
+        )}
+
+        <Link
+          to={to}
+          className={`bg-white text-black w-fit px-4 py-2 rounded-3xl flex items-center ${
+            activeCard != id ? " px-0 py-0" : "  px-4 py-2"
+          }`}
+        >
           Shop
           <svg
             xmlns="http://www.w3.org/2000/svg"

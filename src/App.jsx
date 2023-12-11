@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Navbar } from "./components";
+import { Navbar, Footer } from "./components";
 import { Blog, Home, Shop } from "./pages";
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/blog" element={<Blog />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
