@@ -4,16 +4,18 @@ import axios from "../axios/axios";
 
 const useFetch = (url) => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData(url) {
       const response = await axios.get(url);
       setData(response.data);
+      setLoading(false);
     }
     fetchData(url);
   }, [url]);
 
-  return { data };
+  return { data, loading };
 };
 
 export default useFetch;

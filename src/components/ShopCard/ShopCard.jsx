@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ShopCard = ({ product }) => {
   return (
     <div class="p-2 border-[1px] border-neutral-800 w-72 bg-white shadow-md rounded-md duration-500 hover:shadow-xl">
-      <a href="#" className="space-y-2">
+      <Link to={`/product/${product.slug}`} className="space-y-2">
         <img
           src={product.images[0].image}
           alt="Product"
@@ -64,7 +65,7 @@ const ShopCard = ({ product }) => {
             </div>
           )}
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
