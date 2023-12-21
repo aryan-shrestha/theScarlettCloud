@@ -3,10 +3,9 @@ import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks";
 import ProductImageViewer from "./components/ProductImageViewer";
-import Row from "../Shop/Components/Row";
 import { ShopCard } from "../../components";
-import FAQSection from "./components/FaqSection";
-import ReviewsSection from "./components/ReviewsSection";
+import { FAQSection } from "./components/FaqSection";
+import { ReviewsSection } from "./components/ReviewsSection";
 
 const Product = () => {
   let { productSlug } = useParams();
