@@ -4,8 +4,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks";
 import ProductImageViewer from "./components/ProductImageViewer";
 import { ShopCard } from "../../components";
-import { FAQSection } from "./components/FAQSection";
-import { ReviewsSection } from "./components/ReviewsSection";
+import FAQSection from "./components/FAQSection";
+import ReviewsSection from "./components/ReviewsSection";
 
 const Product = () => {
   let { productSlug } = useParams();
