@@ -1,16 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
-const SortMenu = ({ toggleSidebar }) => {
+import { Link } from "react-router-dom";
+
+const SortMenu = ({ showSidebar }) => {
   return (
     <div
       className="col-span-full md:col-start-2 sticky top-16 md:py-4 flex items-center justify-between
      md:z-20 bg-white"
     >
-      <div
-        className="flex items-center cursor-pointer text-neutral-800 md:hidden"
-        onClick={toggleSidebar}
-      >
+      <div className="flex items-center cursor-pointer text-neutral-800 md:hidden">
         <svg
           width="24"
           height="24"
@@ -72,7 +70,10 @@ const SortMenu = ({ toggleSidebar }) => {
             />
           </svg>
         </span>
-        <NavLink className="w-fit relative flex items-center space-x-2 cursor-pointer">
+        <Link
+          to="/shop/cart"
+          className="w-fit relative flex items-center space-x-2 cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -88,9 +89,9 @@ const SortMenu = ({ toggleSidebar }) => {
             />
           </svg>
           <span className="absolute -top-1 -right-1 flex justify-center items-center p-2 bg-neutral-800 text-white h-4 w-4 text-xs rounded-full">
-            1
+            0
           </span>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );

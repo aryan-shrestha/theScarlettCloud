@@ -6,6 +6,14 @@ import { images } from "../../assets";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
+  const openMenu = () => {
+    setMenu(true);
+  };
+
+  const closeMenu = () => {
+    setMenu(false);
+  };
+
   return (
     <nav className="container bg-white text-lg text-neutral-800 sticky top-0 px-4 mx-auto md:flex md:items-center md:justify-between z-50">
       <div className="flex justify-between items-center">
@@ -53,30 +61,20 @@ const Navbar = () => {
         </span>
       </div>
       <ul
-        className={`navbar flex items-center flex-col md:flex-row 
+        className={`navbar md:space-x-8 flex items-center flex-col md:flex-row 
                 md:z-auto md:static absolute w-full bg-white
                 left-0 md:w-auto md:opacity-100  ${
                   menu ? "" : "opacity-0 top-[-400px]"
                 } transition-all ease-in duration-200`}
       >
-        <li className="mx-4 my-4 md:my-0">
-          <Link to="/" name="Home" />
+        <li className="my-4 md:my-0">
+          <Link to="/" name="Home" closeMenu={closeMenu} />
         </li>
-        <li className="mx-4 my-4 md:my-0">
-          <Link to="/shop" name="Shop" />
+        <li className="my-4 md:my-0">
+          <Link to="/shop" name="Shop" closeMenu={closeMenu} />
         </li>
-        <li className="mx-4 my-4 md:my-0">
-          <Link to="blog" name="Blog" />
-        </li>
-        <li className="mx-4 my-4 md:my-0">
-          <NavLink className="w-fit flex items-center space-x-2 cursor-pointer">
-            <img
-              src="https://hwchamber.co.uk/wp-content/uploads/2022/04/avatar-placeholder.gif"
-              alt="placeholder"
-              className="h-7 w-7 rounded-full"
-            />
-            <span className="text-base md:hidden">John Doe</span>
-          </NavLink>
+        <li className="my-4 md:my-0">
+          <Link to="blog" name="Blog" closeMenu={closeMenu} />
         </li>
       </ul>
     </nav>
@@ -85,7 +83,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const Link = ({ to, name }) => {
+const Link = ({ to, name, closeMenu }) => {
   return (
     <NavLink
       to={to}
@@ -94,6 +92,7 @@ const Link = ({ to, name }) => {
           ? "text-primary border-neutral-800 "
           : "duration-300 hover:text-primary"
       }
+      onClick={closeMenu}
     >
       {name}
     </NavLink>

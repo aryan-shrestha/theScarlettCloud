@@ -1,31 +1,33 @@
 import React from "react";
-
 import { Link, useNavigate, useParams } from "react-router-dom";
+
 import { useFetch } from "../../hooks";
+
 import ProductImageViewer from "./components/ProductImageViewer";
 import { ShopCard } from "../../components";
 import FAQSection from "./components/FAQSection";
 import ReviewsSection from "./components/ReviewsSection";
+import { Spinner } from "@material-tailwind/react";
 
 const Product = () => {
   let { productSlug } = useParams();
   const navigate = useNavigate();
 
-  const { data: product, loading: loading } = useFetch(
+  const { data: product, loading: loadingProduct } = useFetch(
     `/products/${productSlug}/`
   );
+  const { data: relatedProduct, loading: loadingRelatedProduct } =
+    useFetch("/products/");
 
-  const { data: relatedProduct } = useFetch("/products/");
-  console.log(relatedProduct);
-
-  if (loading) {
-    return (
-      <div className="container mx-auto px-4 h-screen">
-        <p>Loading ..... </p>
+  let content;
+  if (loadingProduct || loadingRelatedProduct) {
+    content = (
+      <div className="container mx-auto flex justify-center items-center h-screen">
+        <Spinner className="w-12 h-12" />
       </div>
     );
   } else {
-    return (
+    content = (
       <div className="product mx-auto container px-4 mt-8 space-y-4 text-neutral-800">
         <button
           className="flex items-center text-primary"
@@ -65,7 +67,7 @@ const Product = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                dataSlot="icon"
+                dataslot="icon"
                 className="w-6 h-6"
               >
                 <path
@@ -87,7 +89,7 @@ const Product = () => {
             ) : (
               <p className="text-lg">Rs. {product.og_price}</p>
             )}
-            <button className="bg-neutral-800 w-full py-4 rounded-xl text-white border-[1px] border-neutral-800 hover:bg-white hover:text-neutral-800 transition-all duration-150">
+            <button className="flex items-center justify-center bg-neutral-800 w-full py-4 rounded-xl text-white border-[1px] border-neutral-800 hover:bg-white hover:text-neutral-800 transition-all duration-150">
               Add to cart
             </button>
             <div className="description leading-7">
@@ -124,6 +126,8 @@ const Product = () => {
       </div>
     );
   }
+
+  return <>{content}</>;
 };
 
 export default Product;

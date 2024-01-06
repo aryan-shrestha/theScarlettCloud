@@ -24,6 +24,7 @@ const GrowingCards = () => {
         {images.map((src, index) => {
           return (
             <Card
+              key={index}
               activeCard={activeCard}
               id={index}
               setActiveCard={() => {

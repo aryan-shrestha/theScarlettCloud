@@ -3,69 +3,55 @@ import { Link } from "react-router-dom";
 
 const ShopCard = ({ product }) => {
   return (
-    <div class="p-2 border-[1px] border-neutral-800 w-72 bg-white shadow-md rounded-md duration-500 hover:shadow-xl">
-      <Link to={`/product/${product.slug}`} className="space-y-2">
+    <div className="p-2 rounded-xl bg-white hover:shadow-lg border-[1px] border-neutral-800 transition-all ease-in duration-200">
+      <Link to={`/product/${product.slug}`}>
         <img
           src={product.images[0].image}
-          alt="Product"
-          class="h-80 w-72 object-cover rounded"
+          alt={`${product.name} image`}
+          className="rounded-lg h-80 w-full object-cover"
         />
-        <div class="px-4 w-72 space-y-2">
-          <span class="text-neutral-400 uppercase text-xs ">
-            {product.category.name}
-          </span>
-          <p class=" text-neutral-700  line-clamp-1">{product.name}</p>
-          {parseInt(product.dis_price) != parseInt(product.og_price) ? (
-            <div class="flex items-center">
-              <p class="font-semibold text-neutral-800">
+      </Link>
+      <div className="px-4 py-3 space-y-2">
+        <span className="text-gray-400 uppercase text-sm">
+          {product.category.name}
+        </span>
+        <p className="font-medium block truncate capitalize text-neutral-800">
+          {product.name}
+        </p>
+        <div className="flex items-center">
+          {product.dis_percentage > 0 ? (
+            <>
+              <p className="text-lg font-semibold text-neutral-800">
                 Rs. {product.dis_price}
               </p>
-              <del className="ml-2">
-                <p class="text-sm text-neutral-500">Rs. {product.og_price}</p>
+              <del>
+                <p className="text-sm text-gray-600 ml-2">
+                  Rs. {product.og_price}
+                </p>
               </del>
-              <div class="ml-auto">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  class="bi bi-bag-plus"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"
-                  />
-                  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                </svg>
-              </div>
-            </div>
+            </>
           ) : (
-            <div class="flex items-center">
-              <p class="font-semibold text-neutral-800">
-                Rs. {product.og_price}
-              </p>
-
-              <div class="ml-auto">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  class="bi bi-bag-plus"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"
-                  />
-                  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                </svg>
-              </div>
-            </div>
+            <p className="text-lg font-semibold">Rs. {product.og_price}</p>
           )}
+
+          <div className="ml-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+              />
+            </svg>
+          </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

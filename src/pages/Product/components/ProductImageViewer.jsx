@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const ProductImageViewer = ({ images }) => {
-  console.log(images);
-  //   const activeImage = images[0].image;
-
   const [currentImage, setCurrentImage] = useState(images[0].image);
 
   useEffect(() => {
@@ -20,9 +17,10 @@ const ProductImageViewer = ({ images }) => {
         />
       </div>
       <div className="flex h-24 space-x-4 ">
-        {images.map((image) => {
+        {images.map((image, index) => {
           return (
             <img
+              key={index}
               src={image.image}
               className="cursor-pointer rounded-lg"
               onClick={() => setCurrentImage(image.image)}

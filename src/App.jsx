@@ -1,22 +1,22 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import { Navbar, Footer } from "./components";
-import { Blog, Home, Product, Shop } from "./pages";
+import { Blog, Cart, Home, PageNotFound, Product, Shop } from "./pages";
 
 function App() {
   return (
-    <div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/product/:productSlug" element={<Product />} />
-        </Routes>
-        <Footer />
-      </Router>
+    <div className="app">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/product/:productSlug" element={<Product />} />
+        <Route path="/shop/cart" element={<Cart />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
