@@ -8,7 +8,7 @@ const ShopCard = ({ product }) => {
         <img
           src={product.images[0].image}
           alt={`${product.name} image`}
-          className="rounded-lg h-80 w-full object-cover"
+          className="rounded-lg h-80 w-96 object-cover"
         />
       </Link>
       <div className="px-4 py-3 space-y-2">

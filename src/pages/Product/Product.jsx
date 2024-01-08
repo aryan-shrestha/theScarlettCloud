@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { useFetch } from "../../hooks";
+import axios from "../../axios/axios";
 
 import ProductImageViewer from "./components/ProductImageViewer";
 import { ShopCard } from "../../components";
@@ -12,12 +13,28 @@ import { Spinner } from "@material-tailwind/react";
 const Product = () => {
   let { productSlug } = useParams();
   const navigate = useNavigate();
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [addToCartBtn, setAddToCartBtn] = useState("Add to cart");
 
   const { data: product, loading: loadingProduct } = useFetch(
     `/products/${productSlug}/`
   );
   const { data: relatedProduct, loading: loadingRelatedProduct } =
     useFetch("/products/");
+
+  const handleAddToCart = async () => {
+    try {
+      setIsAddingToCart(true);
+      const response = await axios.post("/cart/cart-operations/", {
+        product_id: product.id,
+      });
+      setAddToCartBtn("Item added to cart");
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsAddingToCart(false);
+    }
+  };
 
   let content;
   if (loadingProduct || loadingRelatedProduct) {
@@ -89,8 +106,11 @@ const Product = () => {
             ) : (
               <p className="text-lg">Rs. {product.og_price}</p>
             )}
-            <button className="flex items-center justify-center bg-neutral-800 w-full py-4 rounded-xl text-white border-[1px] border-neutral-800 hover:bg-white hover:text-neutral-800 transition-all duration-150">
-              Add to cart
+            <button
+              className="flex items-center justify-center bg-neutral-800 w-full py-4 rounded-xl text-white border-[1px] border-neutral-800 hover:bg-white hover:text-neutral-800 transition-all duration-150"
+              onClick={handleAddToCart}
+            >
+              {isAddingToCart ? <Spinner /> : addToCartBtn}
             </button>
             <div className="description leading-7">
               <h3 className="font-medium text-lg">Description</h3>

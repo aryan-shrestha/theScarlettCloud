@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:categorySlug" element={<Shop />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/product/:productSlug" element={<Product />} />
         <Route path="/shop/cart" element={<Cart />} />

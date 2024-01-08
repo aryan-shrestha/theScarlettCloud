@@ -16,7 +16,7 @@ const ProductImageViewer = ({ images }) => {
           alt=""
         />
       </div>
-      <div className="flex h-24 space-x-4 ">
+      <div className="flex h-24 space-x-2  overflow-x-scroll">
         {images.map((image, index) => {
           return (
             <img

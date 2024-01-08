@@ -4,7 +4,7 @@ import { images } from "../../assets";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-900 mt-10 text-white/80">
+    <footer className="bg-neutral-900 mt-10 text-white/80  ">
       <div className="container mx-auto p-4 flex flex-col space-y-8 lg:flex-row lg:items-start lg:justify-between lg:space-y-0">
         <div className="space-y-2">
           <h1 className="text-white text-xl">The Scarlett Cloud</h1>

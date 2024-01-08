@@ -50,7 +50,7 @@ const SearchBar = ({ showSidebar }) => {
         </form>
       </div>
 
-      <Link className="flex items-center ">
+      <Link className="flex items-center" to={"/shop/cart"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

@@ -36,7 +36,7 @@ const Sidebar = ({ sidebar, closeSidebar, categories }) => {
               className={({ isActive }) =>
                 isActive
                   ? "block text-center py-4 w-full bg-secondary border-[1px] border-neutral-800 rounded-xl"
-                  : "block text-center py-4 w-full text-neutral-800 hover:border-[1px] hover:border-neutral-800 rounded-xl"
+                  : "block text-center py-4 w-full text-neutral-800 border-[1px] border-white hover:border-neutral-800 rounded-xl transition-all duration-200"
               }
               end
             >
@@ -48,27 +48,11 @@ const Sidebar = ({ sidebar, closeSidebar, categories }) => {
             return (
               <li key={category.id}>
                 <NavLink
-                  to={category.slug}
+                  to={`/shop/${category.slug}`}
                   className={({ isActive }) =>
                     isActive
-                      ? "block text-center py-4 w-full text-primary border-[1px] border-primary rounded-xl"
-                      : "block text-center py-4 w-full text-neutral-800 border-[1px] border-white hover:border-neutral-800 rounded-xl"
-                  }
-                >
-                  {category.name}
-                </NavLink>
-              </li>
-            );
-          })}
-          {categories.map((category) => {
-            return (
-              <li key={category.id}>
-                <NavLink
-                  to={category.slug}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "block text-center py-4 w-full text-primary border-[1px] border-primary rounded-xl"
-                      : "block text-center py-4 w-full text-neutral-800 border-[1px] border-white hover:border-neutral-800 rounded-xl"
+                      ? "block text-center py-4 w-full bg-secondary border-[1px] border-neutral-800 rounded-xl"
+                      : "block text-center py-4 w-full text-neutral-800 border-[1px] border-white hover:border-neutral-800 rounded-xl transition-all duration-200"
                   }
                 >
                   {category.name}
