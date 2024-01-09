@@ -58,7 +58,6 @@ const Checkout = () => {
       addressLine2Ref.current.focus();
       return false;
     }
-    console.log(focusedField);
 
     return true; // All fields are valid
   };
