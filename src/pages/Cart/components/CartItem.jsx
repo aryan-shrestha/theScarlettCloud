@@ -51,7 +51,6 @@ const CartItem = ({ item, removeFromCart, updateCartTotal }) => {
     removeFromCart(item.id);
     try {
       const response = await axios.delete(`/cart/cart-operations/${item.id}/`);
-      console.log(response.data);
       updateCartTotal(response.data.cart_total);
     } catch (err) {
       console.log(err);

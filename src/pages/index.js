@@ -3,4 +3,8 @@ export { default as Shop } from "./Shop/Shop";
 export { default as Blog } from "./Blog/Blog";
 export { default as Product } from "./Product/Product";
 export { default as Cart } from "./Cart/Cart";
+export { default as Checkout } from "./Checkout/Checkout";
+export { default as Orders } from "./Orders/Orders";
+export { default as PaymentSuccessful } from "./PaymentSuccessful/PaymentSuccessful";
+export { default as PaymentFailure } from "./PaymentFailure/PaymentFailure";
 export { default as PageNotFound } from "./PageNotFound/PageNotFound";

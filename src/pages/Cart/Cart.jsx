@@ -106,7 +106,7 @@ const Cart = () => {
                   </tr>
                 </thead>
 
-                <tbody className="">
+                <tbody>
                   {cartItems.map((item) => {
                     return (
                       <CartItem
@@ -160,7 +160,10 @@ const Cart = () => {
               <span>Rs. {grandTotal}</span>
             </div>
             <div className="flex flex-col gap-4">
-              <Link className="bg-neutral-800 w-full py-3 text-white text-center rounded-xl border-[1px] border-neutral-800 hover:bg-white hover:text-black transition-all duration-200">
+              <Link
+                to="/shop/checkout"
+                className="bg-neutral-800 w-full py-3 text-white text-center rounded-xl border-[1px] border-neutral-800 hover:bg-white hover:text-black transition-all duration-200"
+              >
                 Checkout
               </Link>
             </div>
