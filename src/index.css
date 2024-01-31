@@ -12,4 +12,10 @@
   html::-webkit-scrollbar {
     display: none;
   }
+
+  ::selection {
+    background-color: black;
+    color: white;
+    mix-blend-mode: difference;
+  }
 }
