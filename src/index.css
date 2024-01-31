@@ -6,37 +6,10 @@
 @layer base {
   html {
     font-family: "Poppins", system-ui, sans-serif;
-    scroll-behavior: smooth;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
   }
-}
-
-.cards-container::-webkit-scrollbar {
-  width: 50px;
-  height: 8px;
-}
-
-/* Track */
-.cards-container::-webkit-scrollbar-track {
-  background: rgb(243, 243, 243);
-  border-radius: 20px;
-}
-
-/* Handle */
-.cards-container::-webkit-scrollbar-thumb {
-  background: rgb(209, 209, 209);
-  border-radius: 20px;
-}
-
-/* Handle on hover */
-.cards-container::-webkit-scrollbar-thumb:hover {
-  background: #bebebe;
-}
-
-@keyframes width {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
+  html::-webkit-scrollbar {
+    display: none;
   }
 }

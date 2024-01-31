@@ -15,6 +15,7 @@ const Orders = () => {
       const response = await axios.get("/orders/");
       setOrder(response.data);
       setOrderItems(response.data.items);
+      console.log(response.data.items);
     } catch (err) {
       console.log(err);
     } finally {
@@ -77,6 +78,7 @@ const Orders = () => {
               </thead>
               <tbody>
                 {orderItems.map((item) => {
+                  console.log(item);
                   return <OrderItem item={item} key={item.id} />;
                 })}
               </tbody>

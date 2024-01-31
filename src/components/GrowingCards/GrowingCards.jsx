@@ -19,22 +19,12 @@ const GrowingCards = () => {
   }, 4000);
 
   return (
-    <div className="">
-      <div className="flex flex-row space-x-4 h-[60vh]">
-        {images.map((src, index) => {
-          return (
-            <Card
-              key={index}
-              activeCard={activeCard}
-              id={index}
-              setActiveCard={() => {
-                setActiveCard(index);
-              }}
-              imageSrc={src}
-              to={"/shop/"}
-            />
-          );
-        })}
+    <div className="wrapper">
+      <div className="container">
+        <input type="radio" name="slide" id="c1" checked />
+        <label htmlFor="c1" className="card">
+          <div className="row"></div>
+        </label>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ import {
 
 function App() {
   return (
-    <div className="app">
+    <div className="app font-poppins overflow-x-hidden">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
