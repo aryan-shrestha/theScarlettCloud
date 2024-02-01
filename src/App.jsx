@@ -13,15 +13,34 @@ import {
   PaymentSuccessful,
   Product,
   Shop,
+  NewShop,
 } from "./pages";
+import AnimatedCursor from "react-animated-cursor";
 
 function App() {
   return (
     <div className="app font-poppins overflow-x-hidden">
+      <AnimatedCursor
+        innerSize={20}
+        outerSize={70}
+        innerScale={2}
+        outerScale={0}
+        hasBlendMode={true}
+        innerStyle={{
+          backgroundColor: "#fff",
+          mixBlendMode: "difference",
+        }}
+        outerStyle={{
+          backgroundColor: "#fff",
+          mixBlendMode: "difference",
+        }}
+        trailingSpeed={20}
+      />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop-new" element={<NewShop />} />
         <Route path="/shop/:categorySlug" element={<Shop />} />
         {/* <Route path="/blog" element={<Blog />} /> */}
         <Route path="/product/:productSlug" element={<Product />} />

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ReactLenis } from "@studio-freight/react-lenis";
-import AnimatedCursor from "react-animated-cursor";
 
 import { images, videos } from "../../assets";
 
@@ -166,24 +165,7 @@ const Home = () => {
 
   return (
     <ReactLenis root>
-      {/* <div className="cursor h-[20px] w-[20px] rounded-full fixed bg-white z-50 bg-blend-difference trasition-all duration-[0.1s]"></div> */}
       <main className="main h-fit text-white bg-black">
-        <AnimatedCursor
-          innerSize={20}
-          outerSize={70}
-          innerScale={2}
-          outerScale={0}
-          hasBlendMode={true}
-          innerStyle={{
-            backgroundColor: "#fff",
-            mixBlendMode: "difference",
-          }}
-          outerStyle={{
-            backgroundColor: "#fff",
-            mixBlendMode: "difference",
-          }}
-          trailingSpeed={40}
-        />
         <section className="page1 relative min-h-[130vh] w-full pt-[16vw] md:pt-[8vw]">
           <h1 className="text-[9vw] text-center  font-light font-playfairDisplay uppercase">
             Turning Ideas

@@ -18,4 +18,11 @@
     color: white;
     mix-blend-mode: difference;
   }
+
+  .text-outline {
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+    color: #fff;
+  }
 }
