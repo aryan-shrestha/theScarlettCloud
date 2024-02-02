@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 
 import { useFetch } from "../../hooks";
 import Card from "./components/Card";
-import axios from "../../axios/axios";
+
 import { Spinner } from "@material-tailwind/react";
 
 const Shop = () => {
-  const { categorySlug } = useParams();
   let categories = [];
   let isLoading = true;
 
   const result = useFetch("/products/category/products/");
-  console.log(result);
+
   const filteredArray = result.data?.filter(
     (category) => category.products && category.products.length > 0
   );

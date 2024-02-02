@@ -11,7 +11,6 @@ const Shop = () => {
   let isLoading = true;
 
   const result = useFetch(`/products/?category__slug=${categorySlug}`);
-  console.log(result);
 
   products = result?.data;
   isLoading = result?.loading;
