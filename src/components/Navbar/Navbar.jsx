@@ -220,7 +220,7 @@ const Navbar = () => {
             {categories.map((category) => {
               return (
                 <li className="text-sm lg:text-base" key={category.id}>
-                  <Link>{category.name}</Link>
+                  <Link to={`/shop-new/${category.slug}`}>{category.name}</Link>
                 </li>
               );
             })}

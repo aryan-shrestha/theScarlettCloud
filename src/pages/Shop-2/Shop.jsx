@@ -1,39 +1,34 @@
 import React, { useEffect, useState } from "react";
-import Card from "./components/Card";
 import { useParams } from "react-router-dom";
+
+import { useFetch } from "../../hooks";
+import Card from "./components/Card";
 import axios from "../../axios/axios";
 import { Spinner } from "@material-tailwind/react";
 
 const Shop = () => {
-  let { categorySlug } = useParams();
-  const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { categorySlug } = useParams();
+  let categories = [];
+  let isLoading = true;
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/products/category/products/");
-      const filteredArray = response.data.filter(
-        (category) => category.products && category.products.length > 0
-      );
-      setCategories(filteredArray);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const result = useFetch("/products/category/products/");
+  console.log(result);
+  const filteredArray = result.data?.filter(
+    (category) => category.products && category.products.length > 0
+  );
+  categories = filteredArray;
+  isLoading = result.loading;
+
+  let content;
 
   if (isLoading) {
-    return (
+    content = (
       <div className="w-full h-screen flex items-center justify-center">
         <Spinner className="h-10 w-10" />
       </div>
     );
   } else {
-    return (
+    content = (
       <div className="container mx-auto p-8 bg-white text-black space-y-36">
         {categories.map((category) => {
           return (
@@ -60,6 +55,8 @@ const Shop = () => {
       </div>
     );
   }
+
+  return content;
 };
 
 export default Shop;
