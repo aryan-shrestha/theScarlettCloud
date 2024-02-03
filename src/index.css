@@ -25,4 +25,13 @@
     -webkit-text-stroke-color: #000;
     color: #fff;
   }
+
+  .images {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+  }
+
+  .images::-webkit-scrollbar {
+    display: none;
+  }
 }

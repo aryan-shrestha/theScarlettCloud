@@ -11,9 +11,9 @@ import {
   PageNotFound,
   PaymentFailure,
   PaymentSuccessful,
-  Product,
   Shop,
-  NewShop,
+  ProductList,
+  Product,
 } from "./pages";
 import AnimatedCursor from "react-animated-cursor";
 
@@ -40,9 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/shop-new" element={<NewShop />} />
-        <Route path="/shop/:categorySlug" element={<Shop />} />
-        <Route path="/shop-new/:categorySlug" element={<Product />} />
+        <Route path="/shop/:categorySlug" element={<ProductList />} />
         {/* <Route path="/blog" element={<Blog />} /> */}
         <Route path="/product/:productSlug" element={<Product />} />
         <Route path="/shop/cart" element={<Cart />} />

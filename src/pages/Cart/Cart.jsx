@@ -79,10 +79,12 @@ const Cart = () => {
     );
   } else {
     content = (
-      <div className="container mx-auto p-4 mt-20 h-screen">
+      <div className="container mx-auto p-4 mt-20 h-screen bg-white text-black">
         <div className="flex flex-col lg:flex-row w-full  justify-between gap-6">
           <div className="w-full ">
-            <h1 className="text-2xl px-4 font-medium">Your Cart</h1>
+            <h1 className="text-3xl px-4 font-semibold font-playfairDisplay">
+              Your Cart
+            </h1>
             {cartItems.length <= 0 ? (
               <div className="p-4 ">
                 <span>
@@ -124,7 +126,7 @@ const Cart = () => {
           <div className="mt-2 h-fit lg:w-[40%] border-[1px] border-neutral-800 rounded-xl w-full p-4 space-y-4">
             <Link
               to={"/shop"}
-              className="text-primary inline-flex items-center hover:underline underline-offset-4 transition-all duration-200"
+              className="inline-flex items-center hover:underline underline-offset-4 transition-all duration-200"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +164,7 @@ const Cart = () => {
             <div className="flex flex-col gap-4">
               <Link
                 to="/shop/checkout"
-                className="bg-neutral-800 w-full py-3 text-white text-center rounded-xl border-[1px] border-neutral-800 hover:bg-white hover:text-black transition-all duration-200"
+                className="bg-neutral-800 w-full py-3 text-white text-center rounded-lg border-[1px] border-neutral-800 hover:bg-white hover:text-black transition-all duration-200 font-medium"
               >
                 Checkout
               </Link>

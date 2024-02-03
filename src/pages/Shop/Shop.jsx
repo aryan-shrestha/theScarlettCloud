@@ -1,73 +1,60 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { Sidebar, ShopCard } from "../../components";
 import { useFetch } from "../../hooks";
+import Card from "./components/Card";
+
 import { Spinner } from "@material-tailwind/react";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import { useParams } from "react-router-dom";
 
 const Shop = () => {
-  let { categorySlug } = useParams();
-  const [sidebar, setSidebar] = useState(false);
+  let categories = [];
+  let isLoading = true;
 
-  let products;
-  let loadingProducts;
+  const result = useFetch("/products/category/products/");
 
-  if (categorySlug) {
-    const result = useFetch(`/products/?category__slug=${categorySlug}`);
-    products = result.data;
-    loadingProducts = result.loading;
-  } else {
-    const result = useFetch("/products/");
-    products = result.data;
-    loadingProducts = result.loading;
-  }
+  const filteredArray = result.data?.filter(
+    (category) => category.products && category.products.length > 0
+  );
+  categories = filteredArray;
+  isLoading = result.loading;
 
-  const { data: categories, loading: loadingCategories } =
-    useFetch("/category/");
-
-  const showSidebar = () => {
-    setSidebar(true);
-  };
-
-  const closeSidebar = () => {
-    setSidebar(false);
-  };
   let content;
 
-  if (loadingProducts || loadingCategories) {
+  if (isLoading) {
     content = (
-      <div className="container mx-auto h-screen flex items-center justify-center">
+      <div className="w-full h-screen flex items-center justify-center">
         <Spinner className="h-10 w-10" />
       </div>
     );
   } else {
     content = (
-      <div className="container mx-auto lg:p-4 lg:flex lg:gap-8">
-        <Sidebar
-          sidebar={sidebar}
-          closeSidebar={closeSidebar}
-          categories={categories}
-          products={products}
-        />
-
-        <div className="p-4 lg:p-0  relative">
-          <SearchBar showSidebar={showSidebar} />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {products.length > 0 ? (
-              products.map((product) => {
-                return <ShopCard product={product} key={product.id} />;
-              })
-            ) : (
-              <p>No products available</p>
-            )}
-          </div>
-        </div>
+      <div className="container mx-auto p-8 bg-white text-black space-y-36">
+        {categories.map((category) => {
+          return (
+            <div key={category.name}>
+              <h1 className="text-outline uppercase text-5xl md:text-7xl font-semibold text-center m-12">
+                {category.name}
+              </h1>
+              <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-16">
+                {category.products.slice(0, 4).map((product) => {
+                  return (
+                    <Card
+                      key={product.id}
+                      productImage={product.images[0].image}
+                      productName={product.name}
+                      productPrice={product.og_price}
+                      productSlug={product.slug}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   }
 
-  return <>{content}</>;
+  return content;
 };
 
 export default Shop;

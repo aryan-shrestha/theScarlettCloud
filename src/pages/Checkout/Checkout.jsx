@@ -14,15 +14,13 @@ const Checkout = () => {
   const [errMessage, setErrMessage] = useState("");
 
   // form input state
-  const [firstName, setFirstName] = useState("aryan");
-  const [lastName, setLastName] = useState("shrestha");
-  const [emailAddress, setEmailAddress] = useState(
-    "aryanshrestha183@gmail.com"
-  );
-  const [contactNo, setContactNo] = useState("9869773639");
-  const [addressLine1, setAddressLine1] = useState("Lalitpur");
-  const [addressLine2, setAddressLine2] = useState("Satdobato");
-  const [orderNote, setOrderNote] = useState("order note");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [contactNo, setContactNo] = useState("");
+  const [addressLine1, setAddressLine1] = useState("");
+  const [addressLine2, setAddressLine2] = useState("");
+  const [orderNote, setOrderNote] = useState("");
 
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
